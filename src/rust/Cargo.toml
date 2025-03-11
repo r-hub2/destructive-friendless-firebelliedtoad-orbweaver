@@ -1,0 +1,28 @@
+[package]
+name = 'orbweaver_r'
+version = '0.18.2'
+edition = '2021'
+
+[lib]
+crate-type = [ 'staticlib', 'lib' ]
+name = 'orbweaver_r'
+
+[dependencies]
+orbweaver = { version = "0.18.2" }
+extendr-api = { version = "0.7", features = ["serde", "result_condition"] }
+
+# This will help us filter the platforms
+# we support to make the final bundle size
+# smaller
+[package.metadata.vendor-filter]
+platforms = [
+    # Linux
+    "x86_64-unknown-linux-gnu",
+    "aarch64-unknown-linux-gnu",
+    # Windows
+    "x86_64-pc-windows-gnu",
+    # MacOS
+    "x86_64-apple-darwin",
+    "aarch64-apple-darwin"
+]
+all-features = true
